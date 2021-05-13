@@ -53,3 +53,9 @@ export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
+
+# MySQL Client
+export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+
+# Rust
+export PATH="/Users/ext.zhewison/.cargo/bin:$PATH"

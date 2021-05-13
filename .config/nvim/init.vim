@@ -23,7 +23,7 @@
 "
 " Author: Manish Sahani <rec.manish.sahani@gmail.com>
 " Description: Vimrc of Manish Sahani. To get started with this distribution,
-"              Please visit - "https://github.com/kalkayan/dotfiles"
+"              Please visit - "https://github.com/en7h/dotfiles"
 
 syntax on
 filetype plugin indent on

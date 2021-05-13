@@ -15,7 +15,7 @@
              time and still use for my  daily work. The repository contains  configs
              files for vim,  tmux and etc.  This reposiotry also contains a file for
              automating the setup of  your development machine by using xcode tools,
-             brew.sh and kalkayan/dotfiles.
+             brew.sh and en7h/dotfiles.
              -----------------------------------------------------------------------
     
 '
@@ -44,7 +44,7 @@ Notice the `--bare` flag, this the clones repository as a bare repository. Bare 
 - `--work-tree` - this can be your home directory, i.e., `$HOME` or `~`)
 - `--git-dir` - where the repository is cloned - `$HOME/.dotfiles` 
 
-Therefore the command to use the repository will have a prefix `git --git-dir=$HOME/.dotfiles --work-tree=$HOME `. To make it easier to use, we alias this to dotfiles [like this](https://github.com/kalkayan/dotfiles/blob/main/.aliases#L70).
+Therefore the command to use the repository will have a prefix `git --git-dir=$HOME/.dotfiles --work-tree=$HOME `. To make it easier to use, we alias this to dotfiles [like this](https://github.com/en7h/dotfiles/blob/main/.aliases#L70).
 
 #### Checkout to the proper branch
 
@@ -72,7 +72,7 @@ Finally source the `.zshrc` or `.bashrc` by doing `source ~/.zshrc` and Voila! T
 This method of managing and sharing has various advantages some of them are shown below:
 
 **1. Keep the dofitles versioned, (basically all the pros of using git)**
-At this point, all your configuration files are being tracked, and you can easily use the `dotfiles` command ([see this line in .aliases](https://github.com/kalkayan/dotfiles/blob/main/.aliases#L69)) to manage the repository, some examples are:-
+At this point, all your configuration files are being tracked, and you can easily use the `dotfiles` command ([see this line in .aliases](https://github.com/en7h/dotfiles/blob/main/.aliases#L69)) to manage the repository, some examples are:-
 ```bash
 # to check the version history 
 dotfiles log
@@ -114,7 +114,7 @@ dotfiles checkout work
 The repository comes with a bash script (`setup`) to automate the installation of all the binaries and applications. Depending on the platform the setup file will changes for example - for macos it uses `brew` and for ubuntu it uses `snap` or `apt-get`. In any case open the `setup` file and update the code according to your needs.
 
 ```
-curl -fsSL https://raw.githubusercontent.com/kalkayan/dotfiles/main/setup | bash
+curl -fsSL https://raw.githubusercontent.com/en7h/dotfiles/main/setup | bash
 ```
 
 ### Macos 
