@@ -2,16 +2,26 @@
 
 # Logging fuction helpers for the script, they take string as their first
 # argument and set and reset the colors of the terminal.
-function P_ () { echo -e "\033[36m$1\033[0m" }
-function S_ () { echo -e "\033[33m$1\033[0m" }
-function T_ () { echo -e "\033[92m$1\033[0m" }
+function P_() {
+    echo -e "\033[36m$1\033[0m"
+}
+function S_() {
+    echo -e "\033[33m$1\033[0m"
+}
+function T_() {
+    echo -e "\033[92m$1\033[0m"
+}
 
 # Ask for sudo beforehand, so that the script doesn't halt installation in the
 # later sections.
 sudo -v
 
 # Keep sudo session persistent, taken from -- https://gist.github.com/cowboy/3118588
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+while true; do
+    sudo -n true
+    sleep 60
+    kill -0 "$$" || exit
+done 2>/dev/null &
 
 [ ! -d $HOME/bin ] && mkdir $HOME/bin
 
@@ -24,18 +34,19 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 #                                                                             #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
-
 # Install Xcode-select (xcode command line tools) if  not already installed
 P_ "Verifying xcode command line tools installation"
 if ! xcode-select -p 2>/dev/null; then
-	# Install the xcode command line tools - xcode-select is the eaisest way.
+    # Install the xcode command line tools - xcode-select is the eaisest way.
     P_ "Installing XCode Command Line tools using default xcode-select"
     xcode-select --install
 
     # Wait for system to install the command line tools (this is to halt the
     # script until tools aren't installed).
     P_ "The Installation is currently in progress, Click Agree on the prompt."
-    while ! xcode-select -p 2>/dev/null; do ; sleep 5 ; done
+    while ! xcode-select -p 2>/dev/null; do
+        sleep 5
+    done
 
     # Verify the installation (the loop will only break when the path for the
     # tools will be found, therefore, no extra verfication needed)
@@ -45,8 +56,8 @@ fi
 # Install brew.sh (system package manager) if already not installed
 P_ "Verifying homebrew installation and updating to the latest version"
 if ! brew -v 2>/dev/null; then
-	# Install homebrew using the method specified at https://brew.sh/
-	P_ "Installing Homebrew -- system package manager for macOS."
+    # Install homebrew using the method specified at https://brew.sh/
+    P_ "Installing Homebrew -- system package manager for macOS."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
 
@@ -62,7 +73,6 @@ brew update
 #                                                                             #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
-
 # The trick behind the mangement of dotfiles is cloning it as a bare repository
 # therefore, first, we need to define some arguments for the git command. The
 # location for the dotfiles is under $HOME directory.
@@ -76,7 +86,6 @@ DF_BRANCH="main"
 if [ ! -d "$HOME/.dotfiles" ]; then
     /usr/bin/git clone --bare https://github.com/en7h/dotfiles.git $HOME/.dotfiles
 fi
-
 
 # Reset the unstagged changes before updating (TODO: experiment with stash)
 if [[ " $@ " =~ " --dotfiles-reset " ]]; then
@@ -97,18 +106,17 @@ dotfiles pull origin $DF_BRANCH
 #                                                                             #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
-
 # Brew Binaries - these are binaries that are available as brew formula. A list
 # of these formulas are stored in the bins.txt file under ~/.config/en7h
 # ~ Note ~ : this file is automatically updates with everytime brew installs or
 # removes a binary
-bins=( $(cut -d '=' -f1 $HOME/.config/en7h/bins.txt) )
+bins=($(cut -d '=' -f1 $HOME/.config/en7h/bins.txt))
 
 # Brew Casks - these are the casks that are available as brew formula. A list
 # of these casks are stored in the casks.txt under ~/.config/en7h folder.
 # ~ Note ~ : this file is automatically updates with everytime brew installs or
 # removes a casks
-casks=( $(cut -d '=' -f1 $HOME/.config/en7h/casks.txt) )
+casks=($(cut -d '=' -f1 $HOME/.config/en7h/casks.txt))
 
 # required to properly install coreutils
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
@@ -118,7 +126,7 @@ P_ "Installing the following binaries $bins"
 for binary in "${bins[@]}"; do
     # split the brew formula into binary name and version of installation and
     # get the name of the binary (ex- php in php@7.4)
-    b=`echo $binary | cut -d \@ -f 1`
+    b=$(echo $binary | cut -d \@ -f 1)
     # check if the binary is already present, otherwise install
     if ! brew list --formula | grep "$b" 1>/dev/null; then
         brew install "$binary"
@@ -157,7 +165,7 @@ if [[ "${bins[@]} " =~ " fzf " ]]; then
 fi
 
 if [[ "${bins[@]} " =~ " neovim " ]]; then
-	sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     vi +PlugInstall +qall
 fi
