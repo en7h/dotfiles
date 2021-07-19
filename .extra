@@ -9,8 +9,5 @@ else # macOS `ls`
 	export LSCOLORS='BxBxhxDxfxhxhxhxhxcxcx'
 fi
 
-# Change the PROMPT style to something like | (base) hades in ~ >
-export PROMPT='%F{8}[%f%F{37}%n%f%F{8}]%f %F{8}%~%f$(git_branch) %F{13}$%f '
-setopt promptsubst
-
-
+# Starship Prompt
+eval "$(starship init zsh)"

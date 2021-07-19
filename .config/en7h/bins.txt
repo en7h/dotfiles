@@ -1,4 +1,3 @@
-anaconda
 ansible
 awscli
 bat
@@ -14,6 +13,7 @@ ec2-instance-selector
 eksctl
 ffmpeg
 fzf
+gawk
 git-lfs
 go
 gomplate
@@ -33,6 +33,7 @@ mysql-client
 neovim
 nvm
 packer
+pipenv
 php@7.4
 pv
 redis
@@ -41,6 +42,7 @@ rsync
 rust
 sops
 sponge
+starship
 task
 telepresence
 terraform-docs

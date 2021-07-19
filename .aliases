@@ -1,11 +1,4 @@
-#!/usr/bin/env bash
-
-# ########################################################################## #
-#                                /!\ Important /!\                           #
-# The file is used to as aliasing all the commands, this file is an for ease #
-# of user and not a core file for tooling, and has a dependency to .extra,   #
-# therefore, this should always be loader after .extra (preferably at last)  #
-# ########################################################################## #
+#!/usr/bin/env zsh
 
 # Towared root navigations
 alias ..="cd .."
@@ -40,8 +33,5 @@ alias tns='tmux new -s '
 alias tls='tmux ls'
 
 
-# :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: #
-#                      =*--  System Specific Aliases --*=                    #
-# :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: #
-# dotfiles (https://github.com/en7h/dotfiles)
+# System specific aliases
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"

@@ -1,5 +1,4 @@
 binance
-brave-browser
 docker
 element
 krisp
@@ -10,7 +9,6 @@ postman
 raycast
 slack
 spectacle
-spectacle-editor
 spotify
 tableplus
 telegram

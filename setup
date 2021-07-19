@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 # Logging fuction helpers for the script, they take string as their first
 # argument and set and reset the colors of the terminal.

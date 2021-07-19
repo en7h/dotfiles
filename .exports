@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 export EDITOR="/usr/local/bin/nvim"
 export NVM_DIR="$HOME/.nvm"
@@ -32,3 +32,8 @@ export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 
 # Rust
 export PATH="/Users/ext.zhewison/.cargo/bin:$PATH"
+
+# Settings
+
+# No homebrew beer emoji when finishing a build
+export HOMEBREW_NO_EMOJI=1
